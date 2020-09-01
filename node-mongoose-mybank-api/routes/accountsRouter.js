@@ -100,8 +100,7 @@ accountsRouter.get('/averageBalance', async (req, res, next) => {
       0
     );
     const avg = branchBalance / accounts.length;
-    console.log(branchBalance);
-    console.log(accounts.length);
+
     res.send({ avg });
   } catch (err) {
     next(err);
@@ -112,7 +111,7 @@ accountsRouter.get('/shortestBalances/:amount', async (req, res, next) => {
   try {
     const amount = parseInt(req.params.amount);
     const accounts = await accountsModel
-      .find({}, { _id: 0, branch: 1, account: 1, balance: 1 })
+      .find({}, { _id: 0, branch: 1, account: 1, name: 1, balance: 1 })
       .sort({ balance: 1 })
       .limit(amount);
     res.send(accounts);
@@ -125,7 +124,7 @@ accountsRouter.get('/biggestBalances/:amount', async (req, res, next) => {
   try {
     const amount = parseInt(req.params.amount);
     const accounts = await accountsModel
-      .find({}, { _id: 0, branch: 1, account: 1, balance: 1 })
+      .find({}, { _id: 0, branch: 1, account: 1, name: 1, balance: 1 })
       .sort({ balance: -1 })
       .limit(amount);
     res.send(accounts);
