@@ -24,7 +24,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(
   cors({
-    origin: 'https://grades-bootcamp-app.herokuapp.com/',
+    origin: 'https://grades-bootcamp-app.herokuapp.com',
   })
 );
 app.use(gradeRouter);
